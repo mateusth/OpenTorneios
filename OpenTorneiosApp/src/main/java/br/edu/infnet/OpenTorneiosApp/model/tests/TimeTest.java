@@ -30,9 +30,9 @@ public class TimeTest implements ApplicationRunner{
                 campos = linha.split(",");
   
                 Time time = new Time();
-               // time.torneio = campos[0];
-                time.capitao = campos[1];
-                time.nomeTime = campos[2];
+                time.nomeTime = campos[0];
+              //time.torneios = campos[1];
+                time.capitao = campos[2];
               //  time.jogadores = campos[3];
                 time.categoria = campos[4];
                 

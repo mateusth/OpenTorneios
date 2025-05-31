@@ -1,4 +1,5 @@
 package br.edu.infnet.OpenTorneiosApp.model.domain;
+
 import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.util.List;

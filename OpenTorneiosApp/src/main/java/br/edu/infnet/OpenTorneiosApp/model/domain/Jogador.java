@@ -2,6 +2,7 @@ package br.edu.infnet.OpenTorneiosApp.model.domain;
 
 import java.text.MessageFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Jogador {
     public String nomeJogador;
@@ -9,7 +10,7 @@ public class Jogador {
     public String telefone;
     public String genero;
     public LocalDate dataNascimento;
-    public Torneio[] torneios;
+    public List<Torneio> torneios;
 
     @Override
     public String toString() {
