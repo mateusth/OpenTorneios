@@ -11,6 +11,6 @@ public class Organizador {
 
     @Override
     public String toString() {
-        return MessageFormat.format("O organizador de torneios {0} - {1} - {2} foi criado com sucesso.", nomeOrganizador, email, telefone);
+        return MessageFormat.format("O organizador de torneios {0} - {1} - {2} foi criado com sucesso.",nomeOrganizador,email,telefone);
     }
 }

@@ -12,15 +12,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.OpenTorneiosApp.model.domain.Organizador;
 import br.edu.infnet.OpenTorneiosApp.model.domain.Torneio;
+import br.edu.infnet.OpenTorneiosApp.model.service.OrganizadorService;
 import br.edu.infnet.OpenTorneiosApp.model.service.TorneioService;
 
+@Order(2)
 @Component
 public class TorneioTest implements ApplicationRunner {
 	@Autowired
 	private TorneioService service;
+    
+	@Autowired
+    private OrganizadorService organizadorService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -36,6 +43,9 @@ public class TorneioTest implements ApplicationRunner {
                 LocalDate dataLimiteInscr = LocalDate.parse(campos[4], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 List<String> categorias = Arrays.asList(campos[5].split(";")); // Categorias separadas por ';'
 
+                // Organizador meuOrganizador = new Organizador();     //essas 2 linhas sao para teste do campos[7] 
+                // meuOrganizador.email = campos[7];        TIREI OS 2 E MUDEI O TORNEIO.ORGANIZADOR ABAIXO COM O NOVO AUTOWIRED ACIMA.
+
                 Torneio torneio = new Torneio();
                 torneio.nomeTorneio = campos[0];
                 torneio.data = data;
@@ -44,7 +54,8 @@ public class TorneioTest implements ApplicationRunner {
                 torneio.dataLimiteInscr = dataLimiteInscr;
                 torneio.categorias = categorias;
                 torneio.valorInscricao = Float.valueOf(campos[6]);
-
+                torneio.organizador = organizadorService.getByEmail(campos[7].trim());
+                
                 service.include(torneio);
                 linha = read.readLine();
             }

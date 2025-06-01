@@ -10,11 +10,13 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.OpenTorneiosApp.model.domain.Jogador;
 import br.edu.infnet.OpenTorneiosApp.model.service.JogadorService;
 
+@Order(3)
 @Component
 public class JogadorTest implements ApplicationRunner{
 	@Autowired
@@ -35,7 +37,7 @@ public class JogadorTest implements ApplicationRunner{
                 
                 Jogador jogador = new Jogador();
                 jogador.nomeJogador = campos[0];
-                jogador.email = campos[1];
+                jogador.emailJogador = campos[1];
                 jogador.telefone = campos[2];
                 jogador.genero = campos[3];
                 jogador.dataNascimento = dataNascimento;

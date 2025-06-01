@@ -19,4 +19,8 @@ public class OrganizadorService {
     public Collection<Organizador> getList() {                      //Cria um metodo do tipo COLLECTION para retornar a lista.
         return mapa.values();                                         // OS 3 SAO PRIVATES
     }
+
+    public Organizador getByEmail(String email) {
+        return mapa.get(email);
+    }
 }

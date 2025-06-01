@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Jogador {
     public String nomeJogador;
-    public String email;
+    public String emailJogador;
     public String telefone;
     public String genero;
     public LocalDate dataNascimento;
@@ -14,6 +14,6 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return MessageFormat.format("O atleta {0} foi criado com sucesso. {1} - {2} - {3} - {4}", nomeJogador, email, telefone, genero, dataNascimento);
+        return MessageFormat.format("O atleta {0} foi criado com sucesso. {1} - {2} - {3} - {4}",nomeJogador,emailJogador,telefone,genero,dataNascimento);
     }
 }

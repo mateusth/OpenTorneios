@@ -17,6 +17,6 @@ public class Torneio {
 
     @Override
     public String toString() {
-        return MessageFormat.format("O torneio {0} - data: {1}, foi criado com sucesso por: {2}.", nomeTorneio, data, organizador);
+        return MessageFormat.format("O torneio {0} - data: {1}, foi criado com sucesso por: {2}.",nomeTorneio,data,organizador.nomeOrganizador);
     }
 }

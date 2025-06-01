@@ -17,4 +17,8 @@ public class TorneioService {
     public Collection<Torneio> getList() {
         return mapa.values();
     }
+
+    public Torneio getByNomeTorneio(String nomeTorneio) {
+        return mapa.get(nomeTorneio);
+    }
 }

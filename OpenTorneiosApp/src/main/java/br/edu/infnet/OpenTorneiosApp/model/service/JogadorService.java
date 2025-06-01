@@ -12,7 +12,7 @@ import br.edu.infnet.OpenTorneiosApp.model.domain.Jogador;
 public class JogadorService {
     private Map<String, Jogador> mapa = new HashMap<String, Jogador>();
     public void include(Jogador jogador) {
-        mapa.put(jogador.email,jogador);
+        mapa.put(jogador.emailJogador,jogador);
     }
     public Collection<Jogador> getList() {
         return mapa.values();

@@ -8,15 +8,21 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.OpenTorneiosApp.model.domain.Time;
+import br.edu.infnet.OpenTorneiosApp.model.service.TorneioService;
 import br.edu.infnet.OpenTorneiosApp.model.service.TimeService;
 
+@Order(4)
 @Component
 public class TimeTest implements ApplicationRunner{
 	@Autowired
 	private TimeService service;
+
+	@Autowired
+    private TorneioService torneioService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -30,10 +36,10 @@ public class TimeTest implements ApplicationRunner{
                 campos = linha.split(",");
   
                 Time time = new Time();
-                time.nomeTime = campos[0];
-              //time.torneios = campos[1];
-                time.capitao = campos[2];
-              //  time.jogadores = campos[3];
+                time.torneio = torneioService.getByNomeTorneio(campos[0]);
+                time.capitao = campos[1];
+                time.nomeTime = campos[2];
+                //time.jogadores.add(campos[3]);
                 time.categoria = campos[4];
                 
                 service.include(time);
