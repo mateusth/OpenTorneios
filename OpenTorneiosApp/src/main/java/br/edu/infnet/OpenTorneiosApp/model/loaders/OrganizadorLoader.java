@@ -1,4 +1,4 @@
-package br.edu.infnet.OpenTorneiosApp.model.tests;
+package br.edu.infnet.OpenTorneiosApp.model.loaders;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,9 +16,9 @@ import br.edu.infnet.OpenTorneiosApp.model.service.OrganizadorService;
 
 @Order(1)
 @Component
-public class OrganizadorTest implements ApplicationRunner {
+public class OrganizadorLoader implements ApplicationRunner {
 	@Autowired
-	private OrganizadorService service;
+	private OrganizadorService organizadorService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -36,12 +36,12 @@ public class OrganizadorTest implements ApplicationRunner {
                 organizador.email = campos[1];
                 organizador.telefone = campos[2];
 
-                service.include(organizador);               // metodo para incluir no arquivo
+                organizadorService.incluir(organizador);               // metodo para incluir no arquivo
                 linha = read.readLine();            //faz a leitura da proxima linha
             }
             System.out.println("#ORGANIZADOR");
                         
-            for(Organizador item : service.getList()) {     //forEach com metodo para exibir cada no console
+            for(Organizador item : organizadorService.obterLista()) {     //forEach com metodo para exibir cada no console
                 System.out.println(item);
             }
 
@@ -55,3 +55,4 @@ public class OrganizadorTest implements ApplicationRunner {
         }
     }
 }
+

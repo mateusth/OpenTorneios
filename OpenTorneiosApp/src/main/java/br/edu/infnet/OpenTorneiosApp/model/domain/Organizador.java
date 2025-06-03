@@ -3,10 +3,23 @@ package br.edu.infnet.OpenTorneiosApp.model.domain;
 import java.text.MessageFormat;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name="TOrganizador")
 public class Organizador {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    public Integer Id;
     public String nomeOrganizador;
     public String email;
     public String telefone;
+    @Transient
     public List<Torneio> torneios;
 
     @Override

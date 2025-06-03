@@ -1,4 +1,4 @@
-package br.edu.infnet.OpenTorneiosApp.model.tests;
+package br.edu.infnet.OpenTorneiosApp.model.loaders;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,14 +12,14 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.OpenTorneiosApp.model.domain.Time;
-import br.edu.infnet.OpenTorneiosApp.model.service.TorneioService;
 import br.edu.infnet.OpenTorneiosApp.model.service.TimeService;
+import br.edu.infnet.OpenTorneiosApp.model.service.TorneioService;
 
 @Order(4)
 @Component
-public class TimeTest implements ApplicationRunner{
+public class TimeLoader implements ApplicationRunner{
 	@Autowired
-	private TimeService service;
+	private TimeService timeService;
 
 	@Autowired
     private TorneioService torneioService;
@@ -36,17 +36,17 @@ public class TimeTest implements ApplicationRunner{
                 campos = linha.split(",");
   
                 Time time = new Time();
-                time.torneio = torneioService.getByNomeTorneio(campos[0]);
+              //  time.torneio = torneioService.getByNomeTorneio(campos[0]);
                 time.capitao = campos[1];
                 time.nomeTime = campos[2];
                 //time.jogadores.add(campos[3]);
                 time.categoria = campos[4];
                 
-                service.include(time);
+                timeService.incluir(time);
                 linha = read.readLine();
             }
             System.out.println("#TIME");
-            for(Time item : service.getList()) {
+            for(Time item : timeService.obterLista()) {
                 System.out.println(item);
             }
             read.close();

@@ -1,4 +1,4 @@
-package br.edu.infnet.OpenTorneiosApp.model.tests;
+package br.edu.infnet.OpenTorneiosApp.model.loaders;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,9 +18,9 @@ import br.edu.infnet.OpenTorneiosApp.model.service.JogadorService;
 
 @Order(3)
 @Component
-public class JogadorTest implements ApplicationRunner{
+public class JogadorLoader implements ApplicationRunner{
 	@Autowired
-	private JogadorService service;
+	private JogadorService jogadorService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -42,12 +42,12 @@ public class JogadorTest implements ApplicationRunner{
                 jogador.genero = campos[3];
                 jogador.dataNascimento = dataNascimento;
 
-                service.include(jogador);
+                jogadorService.incluir(jogador);
                 linha = read.readLine();
             }
             System.out.println("#JOGADOR");
                         
-            for(Jogador item : service.getList()) {
+            for(Jogador item : jogadorService.obterLista()) {
                 System.out.println(item);
             }
             read.close();

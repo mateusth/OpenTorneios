@@ -1,20 +1,22 @@
 package br.edu.infnet.OpenTorneiosApp.model.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.OpenTorneiosApp.model.domain.Jogador;
+import br.edu.infnet.OpenTorneiosApp.model.repository.JogadorRepository;
 
 @Service
 public class JogadorService {
-    private Map<String, Jogador> mapa = new HashMap<String, Jogador>();
-    public void include(Jogador jogador) {
-        mapa.put(jogador.emailJogador,jogador);
-    }
-    public Collection<Jogador> getList() {
-        return mapa.values();
-    }
+
+	@Autowired
+	private JogadorRepository jogadorRepository;
+	
+	public Jogador incluir(Jogador jogador) {
+		return jogadorRepository.save(jogador);
+	}
+	
+	public Iterable<Jogador> obterLista() {
+		return jogadorRepository.findAll();
+	}
 }
