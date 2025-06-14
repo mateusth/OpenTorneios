@@ -39,4 +39,8 @@ public class TorneioService {
 	public Torneio obterPorId(Integer id) {
 		return torneioRepository.findById(id).orElseThrow(() -> new RuntimeException("Torneio nao encontrado com o id: " + id));
 	}
+	
+	public Torneio obterPorNomeTorneio(String nomeTorneio) {
+		return torneioRepository.findByNomeTorneio(nomeTorneio).orElseThrow(() -> new RuntimeException("Torneio nao encontrado com o nome: " + nomeTorneio));
+	}
 }

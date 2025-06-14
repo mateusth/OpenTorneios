@@ -3,6 +3,8 @@ package br.edu.infnet.OpenTorneiosApp.model.domain;
 import java.text.MessageFormat;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,9 +19,12 @@ public class Time {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer id;
+    @JsonIgnore
     @ManyToOne
     public Torneio torneio;
-    public String capitao;
+    @JsonIgnore
+    @ManyToOne
+    public Jogador nomeCapitao;
     public String nomeTime;
     public List<String> jogadores;
     public String categoria;

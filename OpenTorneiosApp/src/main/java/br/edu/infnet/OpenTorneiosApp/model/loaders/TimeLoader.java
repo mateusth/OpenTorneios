@@ -13,7 +13,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.OpenTorneiosApp.model.domain.Jogador;
 import br.edu.infnet.OpenTorneiosApp.model.domain.Time;
+import br.edu.infnet.OpenTorneiosApp.model.domain.Torneio;
+import br.edu.infnet.OpenTorneiosApp.model.service.JogadorService;
 import br.edu.infnet.OpenTorneiosApp.model.service.TimeService;
 import br.edu.infnet.OpenTorneiosApp.model.service.TorneioService;
 
@@ -23,8 +26,11 @@ public class TimeLoader implements ApplicationRunner{
 	@Autowired
 	private TimeService timeService;
 
-	//@Autowired
-    //private TorneioService torneioService;
+	@Autowired
+    private TorneioService torneioService;
+
+	@Autowired
+    private JogadorService jogadorService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -39,9 +45,12 @@ public class TimeLoader implements ApplicationRunner{
   
                 List<String> jogadores = Arrays.asList(campos[3].split(";")); // Categorias separadas por ';'
 
+                Torneio torneio = torneioService.obterPorNomeTorneio(campos[0]);
+                Jogador jogador = jogadorService.obterPorNomeCapitao(campos[1]);
+
                 Time time = new Time();
-              //  time.torneio = torneioService.getByNomeTorneio(campos[0]);
-                time.capitao = campos[1];
+                time.torneio = torneio;
+                time.nomeCapitao = jogador;
                 time.nomeTime = campos[2];
                 time.jogadores = jogadores;
                 time.categoria = campos[4];

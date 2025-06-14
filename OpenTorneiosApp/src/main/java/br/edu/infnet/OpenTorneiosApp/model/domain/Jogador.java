@@ -23,8 +23,8 @@ public class Jogador {
     public String genero;
     public LocalDate dataNascimento;
     @OneToMany(mappedBy = "nomeCapitao")
-    public List<Torneio> torneios;
-
+    public List<Time> times;
+    
     @Override
     public String toString() {
         return MessageFormat.format("O atleta {0} foi criado com sucesso. {1} - {2} - {3} - {4}",nomeCapitao,emailJogador,telefone,genero,dataNascimento);

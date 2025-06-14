@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.infnet.OpenTorneiosApp.model.domain.Jogador;
 import br.edu.infnet.OpenTorneiosApp.model.domain.Organizador;
+import br.edu.infnet.OpenTorneiosApp.model.domain.Torneio;
 import br.edu.infnet.OpenTorneiosApp.model.repository.JogadorRepository;
 
 @Service
@@ -38,5 +39,9 @@ public class JogadorService {
 	
 	public Jogador obterPorId(Integer id) {
 		return jogadorRepository.findById(id).orElseThrow(() -> new RuntimeException("Jogador nao encontrado com o id: " + id));
+	}
+	
+	public Jogador obterPorNomeCapitao(String nomeCapitao) {
+		return jogadorRepository.findByNomeCapitao(nomeCapitao).orElseThrow(() -> new RuntimeException("Capitao nao encontrado com o nome: " + nomeCapitao));
 	}
 }

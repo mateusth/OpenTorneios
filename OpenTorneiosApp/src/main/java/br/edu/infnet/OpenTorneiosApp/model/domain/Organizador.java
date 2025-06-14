@@ -21,7 +21,6 @@ public class Organizador {
     public String nomeOrganizador;
     public String email;
     public String telefone;
-    
     @OneToMany(mappedBy = "organizador")
     public List<Torneio> torneios;
 

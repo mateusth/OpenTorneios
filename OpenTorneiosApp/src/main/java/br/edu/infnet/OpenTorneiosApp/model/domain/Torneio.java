@@ -32,8 +32,6 @@ public class Torneio {
     public Organizador organizador;
     @OneToMany(mappedBy = "torneio")
     public List<Time> times;
-    @ManyToOne
-    public Jogador nomeCapitao;
 
     @Override
     public String toString() {
