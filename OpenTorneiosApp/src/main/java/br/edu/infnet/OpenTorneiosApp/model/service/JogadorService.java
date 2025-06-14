@@ -29,7 +29,7 @@ public class JogadorService {
 		if(!jogadorRepository.existsById(id)) {
 			throw new RuntimeException("Jogador nao encontrado com o id: " + id);
 		}
-		jogador.id = id;
+		jogador.setId(id);
 		return jogadorRepository.save(jogador);
 	}
 		

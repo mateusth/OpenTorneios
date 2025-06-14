@@ -28,7 +28,7 @@ public class TimeService {
 		if(!timeRepository.existsById(id)) {
 			throw new RuntimeException("Time nao encontrado com o id: " + id);
 		}
-		time.id = id;
+		time.setId(id);
 		return timeRepository.save(time);
 	}
 	

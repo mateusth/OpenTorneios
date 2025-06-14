@@ -46,14 +46,14 @@ public class TorneioLoader implements ApplicationRunner {
                 Organizador organizador = organizadorService.obterPorEmail(campos[7]);
                 
                 Torneio torneio = new Torneio();
-                torneio.nomeTorneio = campos[0];
-                torneio.data = data;
-                torneio.horario = campos[2];
-                torneio.localizacao = campos[3];
-                torneio.dataLimiteInscr = dataLimiteInscr;
-                torneio.categorias = categorias;
-                torneio.valorInscricao = Float.valueOf(campos[6]);
-                torneio.organizador = organizador;
+                torneio.setNomeTorneio(campos[0]);
+                torneio.setData(data);
+                torneio.setHorario(campos[2]);
+                torneio.setLocalizacao(campos[3]);
+                torneio.setDataLimiteInscr(dataLimiteInscr);
+                torneio.setCategorias(categorias);
+                torneio.setValorInscricao(Float.valueOf(campos[6]));
+                torneio.setOrganizador(organizador);
                 
                 TorneioService.incluir(torneio);
                 linha = read.readLine();

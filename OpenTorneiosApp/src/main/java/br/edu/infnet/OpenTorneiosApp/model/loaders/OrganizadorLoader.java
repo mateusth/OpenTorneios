@@ -32,9 +32,9 @@ public class OrganizadorLoader implements ApplicationRunner {
                 campos = linha.split(",");            //pego cada linha(que tem 3 itens divididos por virgula
 
                 Organizador organizador = new Organizador();
-                organizador.nomeOrganizador = campos[0];
-                organizador.email = campos[1];
-                organizador.telefone = campos[2];
+                organizador.setNomeOrganizador(campos[0]);
+                organizador.setEmail(campos[1]);
+                organizador.setTelefone(campos[2]);;
 
                 organizadorService.incluir(organizador);               // metodo para incluir no arquivo
                 linha = read.readLine();            //faz a leitura da proxima linha

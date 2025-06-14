@@ -49,11 +49,11 @@ public class TimeLoader implements ApplicationRunner{
                 Jogador jogador = jogadorService.obterPorNomeCapitao(campos[1]);
 
                 Time time = new Time();
-                time.torneio = torneio;
-                time.nomeCapitao = jogador;
-                time.nomeTime = campos[2];
-                time.jogadores = jogadores;
-                time.categoria = campos[4];
+                time.setTorneio(torneio);
+                time.setNomeCapitao(jogador);
+                time.setNomeTime(campos[2]);
+                time.setJogadores(jogadores);
+                time.setCategoria(campos[4]);
                 
                 timeService.incluir(time);
                 linha = read.readLine();

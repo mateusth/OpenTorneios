@@ -28,7 +28,7 @@ public class TorneioService {
 		if(!torneioRepository.existsById(id)) {
 			throw new RuntimeException("Torneio nao encontrado com o id: " + id);
 		}
-		torneio.id = id;
+		torneio.setId(id);
 		return torneioRepository.save(torneio);
 	}
 		

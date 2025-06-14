@@ -36,11 +36,11 @@ public class JogadorLoader implements ApplicationRunner{
                 LocalDate dataNascimento = LocalDate.parse(campos[4], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 
                 Jogador jogador = new Jogador();
-                jogador.nomeCapitao = campos[0];
-                jogador.emailJogador = campos[1];
-                jogador.telefone = campos[2];
-                jogador.genero = campos[3];
-                jogador.dataNascimento = dataNascimento;
+                jogador.setNomeCapitao(campos[0]) ;
+                jogador.setEmailJogador(campos[1]);
+                jogador.setTelefone(campos[2]);
+                jogador.setGenero(campos[3]);
+                jogador.setDataNascimento(dataNascimento);
 
                 jogadorService.incluir(jogador);
                 linha = read.readLine();

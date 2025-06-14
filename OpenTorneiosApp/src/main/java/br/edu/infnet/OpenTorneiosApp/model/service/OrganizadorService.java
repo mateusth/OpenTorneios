@@ -27,7 +27,7 @@ public class OrganizadorService {
 		if(!organizadorRepository.existsById(id)) {
 			throw new RuntimeException("Organizador nao encontrado com o id: " + id);
 		}
-		organizador.id = id;
+		organizador.setId(id);
 		return organizadorRepository.save(organizador);
 	}
 	

@@ -15,14 +15,54 @@ import jakarta.persistence.Transient;
 @Table(name="TOrganizador")
 public class Organizador {
 	
-    @Id
+    public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNomeOrganizador() {
+		return nomeOrganizador;
+	}
+
+	public void setNomeOrganizador(String nomeOrganizador) {
+		this.nomeOrganizador = nomeOrganizador;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public List<Torneio> getTorneios() {
+		return torneios;
+	}
+
+	public void setTorneios(List<Torneio> torneios) {
+		this.torneios = torneios;
+	}
+
+	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Integer id;
-    public String nomeOrganizador;
-    public String email;
-    public String telefone;
+    private Integer id;
+    private String nomeOrganizador;
+    private String email;
+    private String telefone;
     @OneToMany(mappedBy = "organizador")
-    public List<Torneio> torneios;
+    private List<Torneio> torneios;
 
     @Override
     public String toString() {
