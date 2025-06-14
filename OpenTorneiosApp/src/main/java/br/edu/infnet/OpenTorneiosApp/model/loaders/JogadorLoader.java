@@ -36,7 +36,7 @@ public class JogadorLoader implements ApplicationRunner{
                 LocalDate dataNascimento = LocalDate.parse(campos[4], DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 
                 Jogador jogador = new Jogador();
-                jogador.nomeJogador = campos[0];
+                jogador.nomeCapitao = campos[0];
                 jogador.emailJogador = campos[1];
                 jogador.telefone = campos[2];
                 jogador.genero = campos[3];

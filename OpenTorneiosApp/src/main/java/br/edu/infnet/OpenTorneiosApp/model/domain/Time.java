@@ -7,20 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
 @Entity
-@Table(name="TOrganizador")
+@Table(name="TTime")
 public class Time {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public Integer Id;
-    @Transient
+    public Integer id;
+    @ManyToOne
     public Torneio torneio;
     public String capitao;
     public String nomeTime;
-    @Transient
     public List<String> jogadores;
     public String categoria;
 

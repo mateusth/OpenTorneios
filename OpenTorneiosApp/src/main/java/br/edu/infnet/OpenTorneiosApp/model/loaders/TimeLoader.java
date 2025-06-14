@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -21,8 +23,8 @@ public class TimeLoader implements ApplicationRunner{
 	@Autowired
 	private TimeService timeService;
 
-	@Autowired
-    private TorneioService torneioService;
+	//@Autowired
+    //private TorneioService torneioService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -35,11 +37,13 @@ public class TimeLoader implements ApplicationRunner{
             while(linha != null) {
                 campos = linha.split(",");
   
+                List<String> jogadores = Arrays.asList(campos[3].split(";")); // Categorias separadas por ';'
+
                 Time time = new Time();
               //  time.torneio = torneioService.getByNomeTorneio(campos[0]);
                 time.capitao = campos[1];
                 time.nomeTime = campos[2];
-                //time.jogadores.add(campos[3]);
+                time.jogadores = jogadores;
                 time.categoria = campos[4];
                 
                 timeService.incluir(time);
